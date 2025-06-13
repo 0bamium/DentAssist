@@ -56,14 +56,33 @@ namespace DentAssist.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Rut,Telefono,Email,Direccion")] Paciente paciente)
         {
-            if (ModelState.IsValid)
+            Console.WriteLine("🚀 Entrando al método POST Create");
+
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine("⚠️ ModelState inválido. Errores:");
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine("🛑 " + error.ErrorMessage);
+                }
+
+                return View(paciente);
+            }
+
+            try
             {
                 paciente.Id = Guid.NewGuid();
                 _context.Add(paciente);
                 await _context.SaveChangesAsync();
+                Console.WriteLine("✅ Paciente guardado correctamente.");
                 return RedirectToAction(nameof(Index));
             }
-            return View(paciente);
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Error al guardar el paciente: " + ex.Message);
+                ModelState.AddModelError(string.Empty, "Ocurrió un error al guardar el paciente.");
+                return View(paciente);
+            }
         }
 
         // GET: Pacientes/Edit/5

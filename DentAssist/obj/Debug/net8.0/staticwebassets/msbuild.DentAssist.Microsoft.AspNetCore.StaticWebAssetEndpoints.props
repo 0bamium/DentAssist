@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DentAssist.x7tla87o2l.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1128"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 13 Jun 2025 01:58:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1128"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 13 Jun 2025 18:16:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DentAssist/DentAssist.x7tla87o2l.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\DentAssist.x7tla87o2l.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"x7tla87o2l"},{"Name":"integrity","Value":"sha256-054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0="},{"Name":"label","Value":"_content/DentAssist/DentAssist.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1128"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 13 Jun 2025 01:58:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1128"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022054FCYB4MNCVfp7RVY2OjnQ21MqMoDk3IgLTVwn/Du0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 13 Jun 2025 18:16:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/DentAssist/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>

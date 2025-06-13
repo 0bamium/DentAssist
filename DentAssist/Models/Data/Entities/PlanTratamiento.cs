@@ -16,6 +16,7 @@ namespace DentAssist.Models.Data.Entities
         public Guid OdontologoId { get; set; }
 
         //  Navigation properties
-        public ICollection<PasoTratamiento> Pasos { get; set; }
+        public ICollection<PasoTratamiento> Pasos { get; set; } = new List<PasoTratamiento>();
+
     }
 }
