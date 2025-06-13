@@ -7751,23 +7751,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josem\\.nuget\\packages\\": {},
+    "C:\\Users\\seba\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\DentAssist.csproj",
+      "projectUniqueName": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\DentAssist.csproj",
       "projectName": "DentAssist",
-      "projectPath": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\DentAssist.csproj",
-      "packagesPath": "C:\\Users\\josem\\.nuget\\packages\\",
-      "outputPath": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\obj\\",
+      "projectPath": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\DentAssist.csproj",
+      "packagesPath": "C:\\Users\\seba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\josem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\seba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7795,7 +7795,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -7841,7 +7841,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
