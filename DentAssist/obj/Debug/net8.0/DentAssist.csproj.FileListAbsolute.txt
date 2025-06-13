@@ -275,10 +275,10 @@ C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticweba
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.csproj.Up2Date
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.dll
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\refint\DentAssist.dll
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.pdb
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.genruntimeconfig.cache
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\ref\DentAssist.dll
+C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
