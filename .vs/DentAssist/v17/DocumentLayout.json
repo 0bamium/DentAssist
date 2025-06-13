@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|c:\\users\\seba\\desktop\\patrones\\dentassist\\dentassist\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|solutionrelative:dentassist\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|c:\\users\\seba\\desktop\\patrones\\dentassist\\dentassist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|solutionrelative:dentassist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|c:\\users\\seba\\desktop\\patrones\\dentassist\\dentassist\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|solutionrelative:dentassist\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Program.cs",
               "RelativeDocumentMoniker": "DentAssist\\Program.cs",
               "ToolTip": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Program.cs",
               "RelativeToolTip": "DentAssist\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-13T19:41:44.66Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "DentAssist\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "DentAssist\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T19:40:39.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T19:40:39.004Z"
             }
           ]
         }
