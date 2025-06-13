@@ -15,7 +15,7 @@ namespace DentAssist.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Dashboard");
         }
 
         public IActionResult Privacy()
