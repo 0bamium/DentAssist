@@ -37,16 +37,16 @@ Este sistema busca reemplazar la gestión manual con una plataforma digital que 
 1. Clona o descarga el repositorio.
 2. Abre la solución `DentAssist.sln` en Visual Studio.
 3. Verifica que la cadena de conexión en `appsettings.json` esté correctamente configurada:
+## Nota
+> Debes reemplazar los datos del servidor al que tu tengas
 
    ```json
    "ConnectionStrings": {
      "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=DentAssistDb;Trusted_Connection=True;MultipleActiveResultSets=true"
    }
    ```
-## Nota
-> Debes reemplazar los datos del servidor al que tu tengas
 
-4. Abre la consola del administrador de paquetes NuGet y ejecuta:
+5. Abre la consola del administrador de paquetes NuGet y ejecuta:
 
    ```
    dotnet ef database update
@@ -54,7 +54,7 @@ Este sistema busca reemplazar la gestión manual con una plataforma digital que 
 
    Esto creará la base de datos con todas las tablas.
 
-5. Presiona **F5** para ejecutar la aplicación.
+6. Presiona **F5** para ejecutar la aplicación.
 
 ---
 
