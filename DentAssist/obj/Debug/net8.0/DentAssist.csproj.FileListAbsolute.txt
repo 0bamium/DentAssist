@@ -260,6 +260,7 @@ F:\ProyectosVS_2022\DentAssist\DentAssist\bin\Debug\net8.0\runtimes\win\lib\net7
 F:\ProyectosVS_2022\DentAssist\DentAssist\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 F:\ProyectosVS_2022\DentAssist\DentAssist\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.csproj.AssemblyReference.cache
 F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.GeneratedMSBuildEditorConfig.editorconfig
 F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.AssemblyInfoInputs.cache
@@ -289,6 +290,8 @@ F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.genruntime
 F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\ref\DentAssist.dll
 F:\ProyectosVS_2022\DentAssist\DentAssist\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 =======
+=======
+>>>>>>> Stashed changes
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\bin\Debug\net8.0\appsettings.json
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\bin\Debug\net8.0\DentAssist.staticwebassets.runtime.json
@@ -573,4 +576,7 @@ C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\refint\Den
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.pdb
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\DentAssist.genruntimeconfig.cache
 C:\Users\seba\Desktop\patrones\DentAssist\DentAssist\obj\Debug\net8.0\ref\DentAssist.dll
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
