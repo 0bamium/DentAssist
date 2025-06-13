@@ -13,3 +13,5 @@ DentAssist/obj/Debug/net8.0/DentAssist.AssemblyInfoInputs.cache
 .vs/DentAssist/v17/.suo
 .vs/DentAssist/v17/DocumentLayout.backup.json
 .vs/DentAssist/v17/DocumentLayout.json
+/DentAssist/bin
+/DentAssist/obj
