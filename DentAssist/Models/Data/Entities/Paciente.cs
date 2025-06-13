@@ -18,7 +18,8 @@ namespace DentAssist.Models.Data.Entities
         public string Direccion { get; set; }
 
         // Navigation properties
-        public ICollection<Turno> Turnos { get; set; }
-        public ICollection<PlanTratamiento> PlanesTratamiento { get; set; }
+        public ICollection<Turno> Turnos { get; set; } = new List<Turno>();
+        public ICollection<PlanTratamiento> PlanesTratamiento { get; set; } = new List<PlanTratamiento>();
+
     }
 }

@@ -15,6 +15,7 @@ namespace DentAssist.Models.Data.Entities
         public decimal PrecioEstimado { get; set; }
 
         // Navigation properties
-        public ICollection<PasoTratamiento> PasosTratamiento { get; set; }
+        public ICollection<PasoTratamiento> PasosTratamiento { get; set; } = new List<PasoTratamiento>();
+
     }
 }
