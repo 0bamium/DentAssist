@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DentAssist | Panel de Control</title>
+    <title>DentAssist | @ViewData["Title"]</title>
 
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
@@ -26,16 +26,13 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.navbar -->
-        <!-- Main Sidebar Container -->
+
+        <!-- Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
             <a href="/" class="brand-link">
                 <i class="fas fa-tooth ml-3"></i>
                 <span class="brand-text font-weight-light">DentAssist</span>
             </a>
-
-            <!-- Sidebar -->
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
@@ -77,19 +74,20 @@
             </section>
         </div>
 
-        <!-- Main Footer -->
+        <!-- Footer -->
         <footer class="main-footer">
-            <strong>&copy; 2025 DentAssist.</strong> Todos los derechos reservados.
+            <strong>&copy; 2025 DentAssist</strong>
+            <div class="float-right d-none d-sm-inline-block">
+                <a href="/Home/Privacy" class="text-light">Privacidad</a>
+            </div>
         </footer>
-
     </div>
 
-    <!-- AdminLTE Scripts -->
+    <!-- Scripts AdminLTE -->
     <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/adminlte/dist/js/adminlte.min.js"></script>
 
-    <!-- Scripts adicionales -->
     @RenderSection("Scripts", required: false)
 </body>
 </html>
