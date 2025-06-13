@@ -16,9 +16,9 @@ Este sistema busca reemplazar la gestión manual con una plataforma digital que 
 
 - ASP.NET Core MVC (.NET 8.0)
 - Entity Framework Core
-- SQL Server LocalDB
+- SQL Server Management Studio 20
 - Razor Pages + Bootstrap
-- Visual Studio 2022
+- Visual Studio Comunity 2022
 - C#
 - Librerías jQuery para validación en formularios
 
@@ -43,8 +43,10 @@ Este sistema busca reemplazar la gestión manual con una plataforma digital que 
      "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=DentAssistDb;Trusted_Connection=True;MultipleActiveResultSets=true"
    }
    ```
+## Nota
+> Debes reemplazar los datos del servidor al que tu tengas
 
-4. Abre la consola del administrador de paquetes (PMC) o terminal de Visual Studio y ejecuta:
+4. Abre la consola del administrador de paquetes NuGet y ejecuta:
 
    ```
    dotnet ef database update
