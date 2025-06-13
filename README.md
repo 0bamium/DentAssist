@@ -1,7 +1,5 @@
 # 🦷 DentAssist - Sistema de Gestión para Clínica Dental "Sonrisa Plena"
 
-Proyecto de evaluación para la asignatura **Programación .NET**, correspondiente a la **Evaluación 2** (20%).
-
 ---
 
 ## 📌 Descripción del proyecto
