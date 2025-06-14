@@ -49,10 +49,12 @@ namespace DentAssist.Controllers
         // GET: Turnoes/Create
         public IActionResult Create()
         {
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email");
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion");
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre");
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre");
+
             return View();
         }
+
 
         // POST: Turnoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -68,8 +70,9 @@ namespace DentAssist.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", turno.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", turno.PacienteId);
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre");
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre");
+
             return View(turno);
         }
 
@@ -86,8 +89,9 @@ namespace DentAssist.Controllers
             {
                 return NotFound();
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", turno.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", turno.PacienteId);
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre");
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre");
+
             return View(turno);
         }
 
@@ -123,8 +127,9 @@ namespace DentAssist.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", turno.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", turno.PacienteId);
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre");
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre");
+
             return View(turno);
         }
 

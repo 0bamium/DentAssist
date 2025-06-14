@@ -1,36 +1,35 @@
 ﻿@model DentAssist.Models.Data.Entities.Tratamiento
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Eliminar Tratamiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Tratamiento</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrecioEstimado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrecioEstimado)
-        </dd>
-    </dl>
+<div class="content-header">
+    <div class="container-fluid">
+        <h1 class="m-0 text-danger">Eliminar Tratamiento</h1>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="content">
+    <div class="container-fluid">
+        <div class="card card-danger">
+            <div class="card-body">
+                <h5>¿Estás seguro que deseas eliminar este tratamiento?</h5>
+                <dl class="row">
+                    <dt class="col-sm-3">Nombre</dt>
+                    <dd class="col-sm-9">@Model.Nombre</dd>
+
+                    <dt class="col-sm-3">Descripción</dt>
+                    <dd class="col-sm-9">@Model.Descripcion</dd>
+
+                    <dt class="col-sm-3">Precio Estimado</dt>
+                    <dd class="col-sm-9">$@Model.PrecioEstimado</dd>
+                </dl>
+                <form asp-action="DeleteConfirmed">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
