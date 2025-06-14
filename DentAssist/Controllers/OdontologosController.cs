@@ -46,7 +46,8 @@ namespace DentAssist.Controllers
         // GET: Odontologoes/Create
         public IActionResult Create()
         {
-            return View();
+            return View(new Odontologo());
+
         }
 
         // POST: Odontologoes/Create

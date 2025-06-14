@@ -234,6 +234,7 @@
     <Folder Include="wwwroot\adminlte\plugins\plugins\pace-progress\themes\orange\" />
     <Folder Include="wwwroot\adminlte\plugins\plugins\pace-progress\themes\pink\" />
     <Folder Include="wwwroot\adminlte\plugins\plugins\pace-progress\themes\purple\" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.6" />
   </ItemGroup>
 
 </Project>

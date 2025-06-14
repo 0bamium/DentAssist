@@ -1,55 +1,69 @@
-﻿@model IEnumerable<DentAssist.Models.Data.Entities.Odontologo>
+﻿@model DentAssist.Models.Data.Entities.Odontologo
 
 @{
-    ViewData["Title"] = "Odontólogos";
+    ViewData["Title"] = "Registrar Odontólogo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Gestión de Odontólogos</h1>
-            </div>
-            <div class="col-sm-6 text-right">
-                <a asp-action="Create" class="btn btn-primary">Nuevo Odontólogo</a>
-            </div>
-        </div>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
-</div>
+</section>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-                            <th>@Html.DisplayNameFor(model => model.Matricula)</th>
-                            <th>@Html.DisplayNameFor(model => model.Especialidad)</th>
-                            <th>@Html.DisplayNameFor(model => model.Email)</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Matricula)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Especialidad)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalle</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">@ViewData["Title"]</h3>
+                    </div>
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Nombre"></label>
+                                <input asp-for="Nombre" class="form-control" required />
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Matricula"></label>
+                                <input asp-for="Matricula" class="form-control" required />
+                                <span asp-validation-for="Matricula" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Especialidad"></label>
+                                <input asp-for="Especialidad" class="form-control" required />
+                                <span asp-validation-for="Especialidad" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" type="email" class="form-control" required />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

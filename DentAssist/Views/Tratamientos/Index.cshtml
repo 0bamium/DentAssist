@@ -1,53 +1,53 @@
 ﻿@model IEnumerable<DentAssist.Models.Data.Entities.Tratamiento>
-
 @{
     ViewData["Title"] = "Tratamientos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-header">
-    <div class="container-fluid">
+<section class="content-header">
+    <div class="container">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Tratamientos</h1>
-            </div>
+            <div class="col-sm-6"><h1>@ViewData["Title"]</h1></div>
             <div class="col-sm-6 text-right">
-                <a asp-action="Create" class="btn btn-primary">Nuevo Tratamiento</a>
+                <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Tratamiento</a>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Precio Estimado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.Nombre</td>
-                                <td>@item.Descripcion</td>
-                                <td>$@item.PrecioEstimado</td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalle</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card card-solid">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Nombre)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Descripcion)</th>
+                                    <th>@Html.DisplayNameFor(m => m.PrecioEstimado)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in Model)
+                                {
+                                    <tr>
+                                        <td>@t.Nombre</td>
+                                        <td>@t.Descripcion</td>
+                                        <td>@t.PrecioEstimado.ToString("C")</td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                            <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>

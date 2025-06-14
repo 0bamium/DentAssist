@@ -1,48 +1,66 @@
 ﻿@model DentAssist.Models.Data.Entities.Turno
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de Turno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Turno</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaHora)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaHora)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duracion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duracion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Paciente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Paciente.Direccion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Odontologo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Odontologo.Email)
-        </dd>
-    </dl>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Detalles de Turno</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Información del Turno</h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Fecha y Hora</dt>
+                    <dd class="col-sm-9">@Model.FechaHora?.ToString("g")</dd>
+
+                    <dt class="col-sm-3">Duración (min)</dt>
+                    <dd class="col-sm-9">@Model.Duracion</dd>
+
+                    <dt class="col-sm-3">Estado</dt>
+                    <dd class="col-sm-9">
+                        @switch (Model.Estado)
+                        {
+                            case 0:
+                                @:Pendiente
+                                break;
+                            case 1:
+
+                                @:Confirmado
+                                break;
+                            case 2:
+                                @:Cancelado
+                                break;
+                        }
+                    </dd>
+
+                    <dt class="col-sm-3">Paciente</dt>
+                    <dd class="col-sm-9">@Model.Paciente?.Nombre</dd>
+
+                    <dt class="col-sm-3">Odontólogo</dt>
+                    <dd class="col-sm-9">@Model.Odontologo?.Nombre</dd>
+                </dl>
+
+                <div class="mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger ml-2">Eliminar</a>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

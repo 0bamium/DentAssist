@@ -1,54 +1,93 @@
 ﻿@model DentAssist.Models.Data.Entities.Turno
-
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Turno";
+    var pacientesList = ViewData["PacienteId"] as SelectList;
+    var odontologosList = ViewData["OdontologoId"] as SelectList;
+    var estadosList = ViewData["Estados"] as SelectList;
 }
 
-<h1>Edit</h1>
-
-<h4>Turno</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FechaHora" class="control-label"></label>
-                <input asp-for="FechaHora" class="form-control" />
-                <span asp-validation-for="FechaHora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duracion" class="control-label"></label>
-                <input asp-for="Duracion" class="form-control" />
-                <span asp-validation-for="Duracion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PacienteId" class="control-label"></label>
-                <select asp-for="PacienteId" class="form-control" asp-items="ViewBag.PacienteId"></select>
-                <span asp-validation-for="PacienteId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OdontologoId" class="control-label"></label>
-                <select asp-for="OdontologoId" class="form-control" asp-items="ViewBag.OdontologoId"></select>
-                <span asp-validation-for="OdontologoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
-</div>
+</section>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">@ViewData["Title"]</h3>
+                    </div>
+                    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger mb-2"></div>
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="form-group">
+                                <label asp-for="FechaHora"></label>
+                                <input asp-for="FechaHora"
+                                       type="datetime-local"
+                                       class="form-control"
+                                       value="@(Model.FechaHora?.ToString("yyyy-MM-ddTHH:mm"))"
+                                       step="1800"
+                                       required />
+                                <span asp-validation-for="FechaHora" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Duracion"></label>
+                                <input asp-for="Duracion"
+                                       type="number"
+                                       min="1"
+                                       class="form-control"
+                                       value="@(Model.Duracion ?? 1)"
+                                       required />
+                                <span asp-validation-for="Duracion" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Estado"></label>
+                                <select asp-for="Estado" asp-items="estadosList" class="form-control" required></select>
+                                <span asp-validation-for="Estado" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PacienteId"></label>
+                                <select asp-for="PacienteId" asp-items="pacientesList" class="form-control select2" required></select>
+                                <span asp-validation-for="PacienteId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OdontologoId"></label>
+                                <select asp-for="OdontologoId" asp-items="odontologosList" class="form-control select2" required></select>
+                                <span asp-validation-for="OdontologoId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+          $('.select2').select2({ placeholder: "Seleccione…", allowClear: true, width: '100%' });
+        });
+    </script>
 }
