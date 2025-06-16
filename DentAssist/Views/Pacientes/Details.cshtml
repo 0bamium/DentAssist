@@ -5,35 +5,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-header">
-    <div class="container-fluid">
-        <h1 class="m-0">Detalles del Paciente</h1>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
-</div>
+</section>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="card card-info">
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-3">Nombre</dt>
-                    <dd class="col-sm-9">@Model.Nombre</dd>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Información del Paciente</h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Nombre</dt>
+                            <dd class="col-sm-8">@Model.Nombre</dd>
 
-                    <dt class="col-sm-3">Rut</dt>
-                    <dd class="col-sm-9">@Model.Rut</dd>
+                            <dt class="col-sm-4">RUT</dt>
+                            <dd class="col-sm-8">@Model.Rut</dd>
 
-                    <dt class="col-sm-3">Teléfono</dt>
-                    <dd class="col-sm-9">@Model.Telefono</dd>
+                            <dt class="col-sm-4">Teléfono</dt>
+                            <dd class="col-sm-8">@Model.Telefono</dd>
 
-                    <dt class="col-sm-3">Email</dt>
-                    <dd class="col-sm-9">@Model.Email</dd>
+                            <dt class="col-sm-4">Email</dt>
+                            <dd class="col-sm-8">@Model.Email</dd>
 
-                    <dt class="col-sm-3">Dirección</dt>
-                    <dd class="col-sm-9">@Model.Direccion</dd>
-                </dl>
-                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
-                <a asp-action="Index" class="btn btn-secondary">Volver</a>
+                            <dt class="col-sm-4">Dirección</dt>
+                            <dd class="col-sm-8">@Model.Direccion</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>

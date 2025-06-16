@@ -1,46 +1,110 @@
 ﻿@model DentAssist.Models.Data.Entities.PlanTratamiento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Registrar Plan de Tratamiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>PlanTratamiento</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FechaCreacion" class="control-label"></label>
-                <input asp-for="FechaCreacion" class="form-control" />
-                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observaciones" class="control-label"></label>
-                <input asp-for="Observaciones" class="form-control" />
-                <span asp-validation-for="Observaciones" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PacienteId" class="control-label"></label>
-                <select asp-for="PacienteId" class ="form-control" asp-items="ViewBag.PacienteId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="OdontologoId" class="control-label"></label>
-                <select asp-for="OdontologoId" class ="form-control" asp-items="ViewBag.OdontologoId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
-</div>
+</section>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">@ViewData["Title"]</h3>
+                    </div>
+
+                    <form id="planForm" asp-action="Create" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                            <div class="form-group">
+                                <label asp-for="FechaCreacion" class="control-label"></label>
+                                <input asp-for="FechaCreacion"
+                                       type="date"
+                                       class="form-control @(ViewData.ModelState[nameof(Model.FechaCreacion)]?.Errors.Any() == true ? "is-invalid" : "")" />
+                                <span asp-validation-for="FechaCreacion" class="invalid-feedback"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Observaciones"></label>
+                                <textarea asp-for="Observaciones"
+                                          class="form-control @(ViewData.ModelState[nameof(Model.Observaciones)]?.Errors.Any() == true ? "is-invalid" : "")">
+                </textarea>
+                                <span asp-validation-for="Observaciones" class="invalid-feedback"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PacienteId">Paciente</label>
+                                <select asp-for="PacienteId"
+                                        class="form-control @(ViewData.ModelState[nameof(Model.PacienteId)]?.Errors.Any() == true ? "is-invalid" : "")"
+                                        asp-items="ViewBag.PacienteId">
+                                    <option value="">-- Seleccione un paciente --</option>
+                                </select>
+                                <span asp-validation-for="PacienteId" class="invalid-feedback"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OdontologoId">Odontólogo</label>
+                                <select asp-for="OdontologoId"
+                                        class="form-control @(ViewData.ModelState[nameof(Model.OdontologoId)]?.Errors.Any() == true ? "is-invalid" : "")"
+                                        asp-items="ViewBag.OdontologoId">
+                                    <option value="">-- Seleccione un odontólogo --</option>
+                                </select>
+                                <span asp-validation-for="OdontologoId" class="invalid-feedback"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Validación extra antes de enviar
+        document.getElementById("planForm").addEventListener("submit", function(e) {
+          let formValid = true;
+          ["FechaCreacion","PacienteId","OdontologoId"]
+            .forEach(name => {
+              const fld = document.querySelector(`[name="${name}"]`);
+              if (!fld.value) {
+                fld.classList.add("is-invalid");
+                formValid = false;
+              } else {
+                fld.classList.remove("is-invalid");
+              }
+            });
+          if (!formValid) {
+            e.preventDefault();
+            console.log("🚫 Faltan campos obligatorios.");
+          } else {
+            console.log("✅ Enviando datos al servidor:",
+              "FechaCreacion=", document.querySelector("[name='FechaCreacion']").value,
+              "PacienteId=", document.querySelector("[name='PacienteId']").value,
+              "OdontologoId=", document.querySelector("[name='OdontologoId']").value
+            );
+          }
+        });
+    </script>
 }

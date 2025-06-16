@@ -1,42 +1,49 @@
 ﻿@model DentAssist.Models.Data.Entities.PlanTratamiento
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle del Plan de Tratamiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</section>
 
-<div>
-    <h4>PlanTratamiento</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCreacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCreacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Paciente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Paciente.Direccion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Odontologo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Odontologo.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Información del Plan</h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Fecha de Creación</dt>
+                            <dd class="col-sm-8">@Model.FechaCreacion.ToString("d")</dd>
+
+                            <dt class="col-sm-4">Observaciones</dt>
+                            <dd class="col-sm-8">@Model.Observaciones</dd>
+
+                            <dt class="col-sm-4">Paciente</dt>
+                            <dd class="col-sm-8">@Model.Paciente.Nombre</dd>
+
+                            <dt class="col-sm-4">Odontólogo</dt>
+                            <dd class="col-sm-8">@Model.Odontologo.Nombre</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

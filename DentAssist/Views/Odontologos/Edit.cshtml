@@ -5,49 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-header">
-    <div class="container-fluid">
-        <h1 class="m-0">Editar Odontólogo</h1>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
-</div>
+</section>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="card card-warning">
-            <div class="card-body">
-                <form asp-action="Edit">
-                    <input type="hidden" asp-for="Id" />
-
-                    <div class="form-group">
-                        <label asp-for="Nombre"></label>
-                        <input asp-for="Nombre" class="form-control" />
-                        <span asp-validation-for="Nombre" class="text-danger"></span>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">@ViewData["Title"]</h3>
                     </div>
+                    <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger mb-2"></div>
 
-                    <div class="form-group">
-                        <label asp-for="Matricula"></label>
-                        <input asp-for="Matricula" class="form-control" />
-                        <span asp-validation-for="Matricula" class="text-danger"></span>
-                    </div>
+                            <div class="form-group">
+                                <label asp-for="Nombre"></label>
+                                <input asp-for="Nombre" class="form-control" />
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
 
-                    <div class="form-group">
-                        <label asp-for="Especialidad"></label>
-                        <input asp-for="Especialidad" class="form-control" />
-                        <span asp-validation-for="Especialidad" class="text-danger"></span>
-                    </div>
+                            <div class="form-group">
+                                <label asp-for="Matricula"></label>
+                                <input asp-for="Matricula" class="form-control" />
+                                <span asp-validation-for="Matricula" class="text-danger"></span>
+                            </div>
 
-                    <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <button type="submit" class="btn btn-warning">Actualizar</button>
-                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-                </form>
+                            <div class="form-group">
+                                <label asp-for="Especialidad"></label>
+                                <input asp-for="Especialidad" class="form-control" />
+                                <span asp-validation-for="Especialidad" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" type="email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-save"></i> Actualizar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

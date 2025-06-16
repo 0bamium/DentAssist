@@ -1,53 +1,64 @@
 ﻿@model IEnumerable<DentAssist.Models.Data.Entities.PlanTratamiento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Planes de Tratamiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<section class="content-header">
+  <div class="container-fluid px-0">
+    <div class="row mb-2 px-3">
+      <div class="col-sm-6">
+        <h1>@ViewData["Title"]</h1>
+      </div>
+      <div class="col-sm-6 text-right">
+        <a asp-action="Create" class="btn btn-primary rounded-pill">
+          <i class="fas fa-plus"></i> Nuevo Plan
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paciente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Odontologo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paciente.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odontologo.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section class="content">
+  <div class="container-fluid px-0">
+    <div class="row no-gutters">
+      <div class="col-12">
+        <div class="card shadow rounded-3 border-0">
+          <div class="card-body px-3">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover rounded-3 overflow-hidden">
+                <thead class="thead-light">
+                  <tr>
+                    <!-- En lugar de m => m.First().FechaCreacion, usamos el tipo directamente -->
+                    <th>@Html.DisplayNameFor((DentAssist.Models.Data.Entities.PlanTratamiento p) => p.FechaCreacion)</th>
+                    <th>@Html.DisplayNameFor((DentAssist.Models.Data.Entities.PlanTratamiento p) => p.Observaciones)</th>
+                    <th>Paciente</th>
+                    <th>Odontólogo</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach (var plan in Model)
+                  {
+                    <tr>
+                      <td>@(plan.FechaCreacion.ToShortDateString() ?? "Sin fecha")</td>
+                      <td>@plan.Observaciones</td>
+                      <td>@(plan.Paciente?.Nombre ?? "N/A")</td>
+                      <td>@(plan.Odontologo?.Nombre ?? "N/A")</td>
+                      <td>
+                        <a asp-action="Edit"   asp-route-id="@plan.Id" class="btn btn-sm btn-warning rounded-circle" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Details"asp-route-id="@plan.Id" class="btn btn-sm btn-info   rounded-circle" title="Detalle"><i class="fas fa-eye"></i></a>
+                        <a asp-action="Delete" asp-route-id="@plan.Id" class="btn btn-sm btn-danger rounded-circle" title="Eliminar"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -48,8 +48,8 @@ namespace DentAssist.Controllers
         // GET: Turnos/Create
         public IActionResult Create()
         {
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre");
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre");
+            ViewBag.Pacientes = new SelectList(_context.Pacientes, "Id", "Nombre");
+            ViewBag.Odontologos = new SelectList(_context.Odontologos, "Id", "Nombre");
             return View();
         }
 
@@ -58,14 +58,13 @@ namespace DentAssist.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FechaHora,Duracion,Estado,PacienteId,OdontologoId")] Turno turno)
         {
-            // Limpia posibles errores de navegación
             ModelState.Remove(nameof(turno.Paciente));
             ModelState.Remove(nameof(turno.Odontologo));
 
             if (!ModelState.IsValid)
             {
-                ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
-                ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
+                ViewBag.Pacientes = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
+                ViewBag.Odontologos = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
                 return View(turno);
             }
 
@@ -76,7 +75,6 @@ namespace DentAssist.Controllers
         }
 
         // GET: Turnos/Edit/5
-        [HttpGet]
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null) return NotFound();
@@ -84,14 +82,8 @@ namespace DentAssist.Controllers
             var turno = await _context.Turnos.FindAsync(id.Value);
             if (turno == null) return NotFound();
 
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
-            ViewData["Estados"] = new SelectList(new[]
-            {
-        new { Value = 0, Text = "Pendiente" },
-        new { Value = 1, Text = "Confirmado" },
-        new { Value = 2, Text = "Cancelado" }
-    }, "Value", "Text", turno.Estado);
+            ViewBag.Pacientes = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
+            ViewBag.Odontologos = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
 
             return View(turno);
         }
@@ -104,23 +96,16 @@ namespace DentAssist.Controllers
         {
             if (id != turno.Id) return NotFound();
 
-            // limpia errores de navegación
             ModelState.Remove(nameof(turno.Paciente));
             ModelState.Remove(nameof(turno.Odontologo));
 
             if (!ModelState.IsValid)
             {
-                ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
-                ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
-                ViewData["Estados"] = new SelectList(new[]
-                {
-            new { Value = 0, Text = "Pendiente" },
-            new { Value = 1, Text = "Confirmado" },
-            new { Value = 2, Text = "Cancelado" }
-        }, "Value", "Text", turno.Estado);
-
+                ViewBag.Pacientes = new SelectList(_context.Pacientes, "Id", "Nombre", turno.PacienteId);
+                ViewBag.Odontologos = new SelectList(_context.Odontologos, "Id", "Nombre", turno.OdontologoId);
                 return View(turno);
             }
+
             _context.Update(turno);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

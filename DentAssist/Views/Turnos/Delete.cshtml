@@ -1,66 +1,57 @@
 ﻿@model DentAssist.Models.Data.Entities.Turno
+
 @{
     ViewData["Title"] = "Eliminar Turno";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var estados = new[] { "Pendiente", "Confirmado", "Realizado", "Cancelado" };
 }
 
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Eliminar Turno</h1>
-            </div>
-            <div class="col-sm-6 text-right">
-                <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">¿Estás seguro que deseas eliminar este turno?</h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Fecha y Hora</dt>
+                            <dd class="col-sm-8">@Model.FechaHora?.ToString("g")</dd>
+
+                            <dt class="col-sm-4">Duración</dt>
+                            <dd class="col-sm-8">@Model.Duracion minutos</dd>
+
+                            <dt class="col-sm-4">Estado</dt>
+                            <dd class="col-sm-8">@estados[Model.Estado ?? 0]</dd>
+
+                            <dt class="col-sm-4">Paciente</dt>
+                            <dd class="col-sm-8">@Model.Paciente?.Nombre</dd>
+
+                            <dt class="col-sm-4">Odontólogo</dt>
+                            <dd class="col-sm-8">@Model.Odontologo?.Nombre</dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer text-right">
+                        <form asp-action="Delete" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" asp-for="Id" />
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="content">
-    <div class="container-fluid">
-        <div class="card card-danger">
-            <div class="card-header">
-                <h3 class="card-title">Confirmar eliminación</h3>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-3">Fecha y Hora</dt>
-                    <dd class="col-sm-9">@Model.FechaHora?.ToString("g")</dd>
-
-                    <dt class="col-sm-3">Duración</dt>
-                    <dd class="col-sm-9">@Model.Duracion</dd>
-
-                    <dt class="col-sm-3">Estado</dt>
-                    <dd class="col-sm-9">
-                        @switch (Model.Estado)
-                        {
-                            case 0:
-                                @:"Pendiente"
-                                break;
-                            case 1:
-                                @:"Confirmado"
-                                break;
-                            case 2:
-                                @:"Cancelado"
-                                break;
-                        }
-                    </dd>
-
-                    <dt class="col-sm-3">Paciente</dt>
-                    <dd class="col-sm-9">@Model.Paciente?.Nombre</dd>
-
-                    <dt class="col-sm-3">Odontólogo</dt>
-                    <dd class="col-sm-9">@Model.Odontologo?.Nombre</dd>
-                </dl>
-
-                <form asp-action="Delete">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" asp-for="Id" />
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Cancelar</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+</section>

@@ -1,69 +1,73 @@
 ﻿@model IEnumerable<DentAssist.Models.Data.Entities.Turno>
+
 @{
     ViewData["Title"] = "Turnos";
-
-    // Definimos el array una sola vez
     var estadosTexto = new[] { "Pendiente", "Confirmado", "Realizado", "Cancelado" };
 }
 
 <section class="content-header">
-    <div class="container">
-        <div class="row mb-2">
-            <div class="col-sm-6"><h1>@ViewData["Title"]</h1></div>
+    <div class="container-fluid px-0">
+        <div class="row mb-2 px-3">
+            <div class="col-sm-6">
+                <h1>@ViewData["Title"]</h1>
+            </div>
             <div class="col-sm-6 text-right">
-                <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Turno</a>
+                <a asp-action="Create" class="btn btn-primary rounded-pill">
+                    <i class="fas fa-plus"></i> Nuevo Turno
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <section class="content">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card card-solid">
-                    <div class="card-body">
-                        <table class="table table-bordered table-hover">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Fecha y Hora</th>
-                                    <th>Duración</th>
-                                    <th>Estado</th>
-                                    <th>Paciente</th>
-                                    <th>Odontólogo</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var t in Model)
-                                {
+    <div class="container-fluid px-0">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <div class="card shadow rounded-3 border-0">
+                    <div class="card-body px-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover rounded-3 overflow-hidden">
+                                <thead class="thead-light">
                                     <tr>
-                                        <td>@t.FechaHora?.ToString("g")</td>
-                                        <td>@t.Duracion</td>
-                                        <td>
-                                            @{
-                                                // Si t.Estado es null usamos 0 ("Pendiente")
-                                                var idx = t.Estado ?? 0;
-                                            }
-                                            @estadosTexto[idx]
-                                        </td>
-                                        <td>@t.Paciente?.Nombre</td>
-                                        <td>@t.Odontologo?.Nombre</td>
-                                        <td>
-                                            <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-sm btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </td>
+                                        <th>Fecha y Hora</th>
+                                        <th>Duración</th>
+                                        <th>Estado</th>
+                                        <th>Paciente</th>
+                                        <th>Odontólogo</th>
+                                        <th>Acciones</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var t in Model)
+                                    {
+                                        <tr>
+                                            <td>@t.FechaHora?.ToString("g")</td>
+                                            <td>@t.Duracion</td>
+                                            <td>
+                                                @{
+                                                    var idx = t.Estado ?? 0;
+                                                }
+                                                @estadosTexto[idx]
+                                            </td>
+                                            <td>@t.Paciente?.Nombre</td>
+                                            <td>@t.Odontologo?.Nombre</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-sm btn-warning rounded-circle" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-sm btn-info rounded-circle" title="Detalle">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-sm btn-danger rounded-circle" title="Eliminar">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

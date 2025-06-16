@@ -1,22 +1,30 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace DentAssist.Models.Data.Entities
 {
+
     public class PlanTratamiento
     {
         public Guid Id { get; set; }
-        [Required(ErrorMessage = "La fecha de la creacion debe ser obligatoria")]
-        public DateTime? FechaCreacion { get; set; }
-        public string Observaciones { get; set; }
 
-        // relationships
-        public Paciente Paciente { get; set; }
+        [Required]
+        public DateTime FechaCreacion { get; set; }
+
+        public string? Observaciones { get; set; }
+
+        [Required]
         public Guid PacienteId { get; set; }
-        public Odontologo Odontologo { get; set; }
+
+        [ValidateNever]       // nunca valides esta propiedad
+        public Paciente? Paciente { get; set; }
+
+        [Required]
         public Guid OdontologoId { get; set; }
 
-        //  Navigation properties
-        public ICollection<PasoTratamiento> Pasos { get; set; } = new List<PasoTratamiento>();
-
+        [ValidateNever]
+        public Odontologo? Odontologo { get; set; }
     }
+
+
 }

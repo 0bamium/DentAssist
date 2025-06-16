@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DentAssist.Models.Data;
+using DentAssist.Models.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DentAssist.Models.Data;
-using DentAssist.Models.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Threading.Tasks;
 
 namespace DentAssist.Controllers
 {
@@ -46,32 +47,39 @@ namespace DentAssist.Controllers
             return View(planTratamiento);
         }
 
-        // GET: PlanTratamientoes/Create
+        // GET: Create
         public IActionResult Create()
         {
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email");
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion");
+            ViewBag.PacienteId = new SelectList(_context.Pacientes, "Id", "Nombre");
+            ViewBag.OdontologoId = new SelectList(_context.Odontologos, "Id", "Nombre");
             return View();
         }
 
-        // POST: PlanTratamientoes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaCreacion,Observaciones,PacienteId,OdontologoId")] PlanTratamiento planTratamiento)
+        public async Task<IActionResult> Create(
+    [Bind("FechaCreacion,Observaciones,PacienteId,OdontologoId")]
+    PlanTratamiento plan)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                planTratamiento.Id = Guid.NewGuid();
-                _context.Add(planTratamiento);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // loguea para depurar:
+                var errores = ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => $"{x.Key}: {string.Join(", ", x.Value.Errors.Select(e => e.ErrorMessage))}");
+                Console.WriteLine("Errores de validación -> " + string.Join(" | ", errores));
+
+                ViewBag.PacienteId = new SelectList(_context.Pacientes, "Id", "Nombre", plan.PacienteId);
+                ViewBag.OdontologoId = new SelectList(_context.Odontologos, "Id", "Nombre", plan.OdontologoId);
+                return View(plan);
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", planTratamiento.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", planTratamiento.PacienteId);
-            return View(planTratamiento);
+
+            _context.Add(plan);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: PlanTratamientoes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
@@ -86,8 +94,8 @@ namespace DentAssist.Controllers
             {
                 return NotFound();
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", planTratamiento.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", planTratamiento.PacienteId);
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", planTratamiento.OdontologoId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", planTratamiento.PacienteId);
             return View(planTratamiento);
         }
 
@@ -123,8 +131,8 @@ namespace DentAssist.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Email", planTratamiento.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Direccion", planTratamiento.PacienteId);
+            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", planTratamiento.OdontologoId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", planTratamiento.PacienteId);
             return View(planTratamiento);
         }
 

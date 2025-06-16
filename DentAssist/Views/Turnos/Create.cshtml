@@ -1,88 +1,87 @@
 ﻿@model DentAssist.Models.Data.Entities.Turno
-@using Microsoft.AspNetCore.Mvc.Rendering
 
 @{
-    ViewData["Title"] = "Nuevo Turno";
+    ViewData["Title"] = "Registrar Turno";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var pacientes = ViewData["PacienteId"] as SelectList;
-    var odontologos = ViewData["OdontologoId"] as SelectList;
+
+    var estados = new[] { "Pendiente", "Confirmado", "Realizado", "Cancelado" };
 }
 
-<div class="content-header">
-    <h1>@ViewData["Title"]</h1>
-</div>
-
-<form asp-action="Create" method="post">
-    @Html.AntiForgeryToken()
-    <div asp-validation-summary="All" class="text-danger mb-3"></div>
-
-    <div class="form-group">
-        <label asp-for="FechaHora"></label>
-        <input asp-for="FechaHora"
-               type="datetime-local"
-               class="form-control"
-               value='@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")'
-               step="1800"
-               required />
-        <span asp-validation-for="FechaHora" class="text-danger"></span>
+<section class="content-header">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
     </div>
+</section>
 
-    <div class="form-group">
-        <label asp-for="Duracion"></label>
-        <input asp-for="Duracion"
-               type="number"
-               class="form-control"
-               min="1"
-               required />
-        <span asp-validation-for="Duracion" class="text-danger"></span>
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">@ViewData["Title"]</h3>
+                    </div>
+
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+                            <div class="form-group">
+                                <label asp-for="FechaHora"></label>
+                                <input asp-for="FechaHora" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="FechaHora" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Duracion"></label>
+                                <input asp-for="Duracion" class="form-control" type="number" />
+                                <span asp-validation-for="Duracion" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Estado"></label>
+                                <select asp-for="Estado" class="form-control">
+                                    @for (int i = 0; i < estados.Length; i++)
+                                    {
+                                        <option value="@i">@estados[i]</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Estado" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="PacienteId"></label>
+                                <select asp-for="PacienteId" class="form-control" asp-items="ViewBag.Pacientes">
+                                    <option value="">Seleccione un paciente</option>
+                                </select>
+                                <span asp-validation-for="PacienteId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="OdontologoId"></label>
+                                <select asp-for="OdontologoId" class="form-control" asp-items="ViewBag.Odontologos">
+                                    <option value="">Seleccione un odontólogo</option>
+                                </select>
+                                <span asp-validation-for="OdontologoId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Estado"></label>
-        <select asp-for="Estado" class="form-control" required>
-            <option disabled selected hidden>Seleccione estado</option>
-            <option value="0">Pendiente</option>
-            <option value="1">Confirmado</option>
-            <option value="2">Cancelado</option>
-        </select>
-        <span asp-validation-for="Estado" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="PacienteId"></label>
-        <select asp-for="PacienteId"
-                class="form-control select2"
-                asp-items="pacientes"
-                required>
-            <option value=""></option>
-        </select>
-        <span asp-validation-for="PacienteId" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="OdontologoId"></label>
-        <select asp-for="OdontologoId"
-                class="form-control select2"
-                asp-items="odontologos"
-                required>
-            <option value=""></option>
-        </select>
-        <span asp-validation-for="OdontologoId" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a asp-action="Index" class="btn btn-secondary ml-2">Cancelar</a>
-</form>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(function () {
-            $('.select2').select2({
-                placeholder: "Seleccione…",
-                allowClear: true,
-                width: '100%'
-            });
-        });
-    </script>
 }
