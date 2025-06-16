@@ -1,71 +1,72 @@
-﻿@{
+﻿@model DentAssist.Models.DashboardViewModel
+@{
     ViewData["Title"] = "Panel de Control";
 }
 
 <div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Panel de Control</h1>
-            </div>
-        </div>
-    </div>
+  <div class="container-fluid">
+    <h1 class="m-0">@ViewData["Title"]</h1>
+  </div>
 </div>
 
 <div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>120</h3>
-                        <p>Pacientes Registrados</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
-                    </div>
-                    <a href="/Pacientes" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>15</h3>
-                        <p>Odontólogos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <a href="/Odontologos" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>40</h3>
-                        <p>Turnos Activos</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <a href="/Turnos" class="small-box-footer">Ver turnos <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>25</h3>
-                        <p>Planes de Tratamiento</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-notes-medical"></i>
-                    </div>
-                    <a href="/PlanTratamientos" class="small-box-footer">Ver planes <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Pacientes -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>@Model.PacientesCount</h3>
+            <p>Pacientes Registrados</p>
+          </div>
+          <div class="icon"><i class="fas fa-user-injured"></i></div>
+          <a asp-controller="Pacientes" asp-action="Index" class="small-box-footer">
+            Más info <i class="fas fa-arrow-circle-right"></i>
+          </a>
         </div>
+      </div>
+
+      <!-- Odontólogos -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>@Model.OdontologosCount</h3>
+            <p>Odontólogos</p>
+          </div>
+          <div class="icon"><i class="fas fa-user-md"></i></div>
+          <a asp-controller="Odontologos" asp-action="Index" class="small-box-footer">
+            Más info <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Turnos -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>@Model.TurnosCount</h3>
+            <p>Turnos Activos</p>
+          </div>
+          <div class="icon"><i class="fas fa-calendar-check"></i></div>
+          <a asp-controller="Turnos" asp-action="Index" class="small-box-footer">
+            Ver turnos <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Planes de Tratamiento -->
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>@Model.PlanesCount</h3>
+            <p>Planes de Tratamiento</p>
+          </div>
+          <div class="icon"><i class="fas fa-notes-medical"></i></div>
+          <a asp-controller="PlanTratamientos" asp-action="Index" class="small-box-footer">
+            Ver planes <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
