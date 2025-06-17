@@ -15,9 +15,12 @@ Este documento describe las reglas de validación utilizadas en el sistema para 
 ## 🧾 Validaciones por Entidad
 
 ### Paciente
-- `Nombre`: `[Required]`, longitud mínima 3 caracteres.
-- `Correo`: `[Required]`, `[EmailAddress]`.
-- `Telefono`: solo dígitos, 9 caracteres.
+- `Nombre`: `[Required]`
+- `Apellidos`: `[Required]`
+- `RUT`: `[Required]`, formato específico.
+- `Teléfono`: `[Required]`
+- `Email`: `[Required]`, `[EmailAddress]`
+- `Dirección`: `[Required]`
 
 ### Turno
 - `Duración`: `[Range(5,180)]` minutos.
@@ -38,7 +41,22 @@ Este documento describe las reglas de validación utilizadas en el sistema para 
 
 ---
 
-## 🧪 Observaciones
+## 📷 Imágenes de Validaciones
 
-- Se usa `int?` y `DateTime?` para forzar validación con `[Required]`.
-- Se recomienda revisar formularios con validadores externos como Postman, Swagger o herramientas de navegador.
+A continuación se presentan imágenes que ilustran las validaciones en los formularios:
+
+- **Paciente**: ![Validaciones Paciente](../imágenes/validaciones/paciente.png)
+- **Turno**: ![Validaciones Turno](../imágenes/validaciones/turno.png)
+- **Odontólogo**: ![Validaciones Odontólogo](../imágenes/validaciones/odontologo.png)
+- **Tratamiento**: ![Validaciones Tratamiento](../imágenes/validaciones/tratamiento.png)
+- **Plan de Tratamiento**: ![Validaciones Plan de Tratamiento](../imágenes/validaciones/plan_tratamiento.png)
+
+## 📄 Imágenes del Código de las Entidades
+
+A continuación se presentan imágenes del código de las entidades para referencia:
+
+- **Código Paciente**: ![Código Paciente](../imagenes/validaciones/codigo_paciente.png)
+- **Código Turno**: ![Código Turno](../imagenes/validaciones/codigo_turno.png)
+- **Código Odontólogo**: ![Código Odontólogo](../imagenes/validaciones/codigo_odontologo.png)
+- **Código Tratamiento**: ![Código Tratamiento](../imagenes/validaciones/codigo_tratamiento.png)
+- **Código Plan de Tratamiento**: ![Código Plan de Tratamiento](../imagenes/validaciones/codigo_plan_tratamiento.png)
