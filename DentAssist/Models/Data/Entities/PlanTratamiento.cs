@@ -8,18 +8,19 @@ namespace DentAssist.Models.Data.Entities
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La fecha de creación es obligatoria.")]
+        [DataType(DataType.Date)]
         public DateTime FechaCreacion { get; set; }
 
         public string? Observaciones { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar un paciente.")]
         public Guid PacienteId { get; set; }
 
         [ValidateNever]       // nunca valides esta propiedad
         public Paciente? Paciente { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar un odontólogo.")]
         public Guid OdontologoId { get; set; }
 
         [ValidateNever]

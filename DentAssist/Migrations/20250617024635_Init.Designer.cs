@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DentAssist.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250613181814_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250617024635_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,10 @@ namespace DentAssist.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Apellidos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -57,6 +61,10 @@ namespace DentAssist.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Apellidos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
                         .IsRequired()
@@ -124,7 +132,6 @@ namespace DentAssist.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Observaciones")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("OdontologoId")
@@ -157,8 +164,7 @@ namespace DentAssist.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecioEstimado")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -198,7 +204,7 @@ namespace DentAssist.Migrations
             modelBuilder.Entity("DentAssist.Models.Data.Entities.PasoTratamiento", b =>
                 {
                     b.HasOne("DentAssist.Models.Data.Entities.PlanTratamiento", "PlanTratamiento")
-                        .WithMany("Pasos")
+                        .WithMany()
                         .HasForeignKey("PlanTratamientoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -264,11 +270,6 @@ namespace DentAssist.Migrations
                     b.Navigation("PlanesTratamiento");
 
                     b.Navigation("Turnos");
-                });
-
-            modelBuilder.Entity("DentAssist.Models.Data.Entities.PlanTratamiento", b =>
-                {
-                    b.Navigation("Pasos");
                 });
 
             modelBuilder.Entity("DentAssist.Models.Data.Entities.Tratamiento", b =>

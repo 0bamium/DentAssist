@@ -55,8 +55,15 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Matricula,Especialidad,Email")] Odontologo odontologo)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellidos,Matricula,Especialidad,Email")] Odontologo odontologo)
         {
+            // --- chequeo duplicados ---
+            if (_context.Odontologos.Any(o => o.Matricula == odontologo.Matricula))
+                ModelState.AddModelError("Matricula", "Ya existe un odontólogo con esa matrícula.");
+
+            if (_context.Odontologos.Any(o => o.Email == odontologo.Email))
+                ModelState.AddModelError("Email", "Ya existe un odontólogo con ese correo.");
+
             if (ModelState.IsValid)
             {
                 odontologo.Id = Guid.NewGuid();
@@ -88,12 +95,17 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nombre,Matricula,Especialidad,Email")] Odontologo odontologo)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nombre,Apellidos,Matricula,Especialidad,Email")] Odontologo odontologo)
         {
             if (id != odontologo.Id)
-            {
                 return NotFound();
-            }
+
+            // --- chequeo duplicados excluyendo este registro ---
+            if (_context.Odontologos.Any(o => o.Matricula == odontologo.Matricula && o.Id != id))
+                ModelState.AddModelError("Matricula", "Ya existe otro odontólogo con esa matrícula.");
+
+            if (_context.Odontologos.Any(o => o.Email == odontologo.Email && o.Id != id))
+                ModelState.AddModelError("Email", "Ya existe otro odontólogo con ese correo.");
 
             if (ModelState.IsValid)
             {
@@ -105,13 +117,9 @@ namespace DentAssist.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!OdontologoExists(odontologo.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }

@@ -54,36 +54,27 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Rut,Telefono,Email,Direccion")] Paciente paciente)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellidos,Rut,Telefono,Email,Direccion")] Paciente paciente)
         {
-            Console.WriteLine("🚀 Entrando al método POST Create");
+            // — chequeo duplicados —
+            if (_context.Pacientes.Any(p => p.Rut == paciente.Rut))
+                ModelState.AddModelError("Rut", "Ya existe un paciente con ese RUT.");
+
+            if (_context.Pacientes.Any(p => p.Email == paciente.Email))
+                ModelState.AddModelError("Email", "Ya existe un paciente con ese correo.");
 
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("⚠️ ModelState inválido. Errores:");
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine("🛑 " + error.ErrorMessage);
-                }
-
+                // tus logs de consola quedan igual si quieres
                 return View(paciente);
             }
 
-            try
-            {
-                paciente.Id = Guid.NewGuid();
-                _context.Add(paciente);
-                await _context.SaveChangesAsync();
-                Console.WriteLine("✅ Paciente guardado correctamente.");
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("❌ Error al guardar el paciente: " + ex.Message);
-                ModelState.AddModelError(string.Empty, "Ocurrió un error al guardar el paciente.");
-                return View(paciente);
-            }
+            paciente.Id = Guid.NewGuid();
+            _context.Add(paciente);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Pacientes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
@@ -106,34 +97,34 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nombre,Rut,Telefono,Email,Direccion")] Paciente paciente)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nombre,Apellidos,Rut,Telefono,Email,Direccion")] Paciente paciente)
         {
             if (id != paciente.Id)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
+            // — chequeo duplicados excluyendo este registro —
+            if (_context.Pacientes.Any(p => p.Rut == paciente.Rut && p.Id != id))
+                ModelState.AddModelError("Rut", "Ya existe otro paciente con ese RUT.");
+
+            if (_context.Pacientes.Any(p => p.Email == paciente.Email && p.Id != id))
+                ModelState.AddModelError("Email", "Ya existe otro paciente con ese correo.");
+
+            if (!ModelState.IsValid)
+                return View(paciente);
+
+            try
             {
-                try
-                {
-                    _context.Update(paciente);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PacienteExists(paciente.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(paciente);
+                await _context.SaveChangesAsync();
             }
-            return View(paciente);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PacienteExists(paciente.Id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Pacientes/Delete/5

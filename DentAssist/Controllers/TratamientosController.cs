@@ -54,17 +54,23 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion,PrecioEstimado")] Tratamiento tratamiento)
+        public async Task<IActionResult> Create([Bind("Nombre,Descripcion,PrecioEstimado")] Tratamiento tratamiento)
         {
-            if (ModelState.IsValid)
-            {
-                tratamiento.Id = Guid.NewGuid();
-                _context.Add(tratamiento);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tratamiento);
+            // Validación: nombre único
+            if (_context.Tratamientos.Any(t => t.Nombre == tratamiento.Nombre))
+                ModelState.AddModelError("Nombre", "Ya existe un tratamiento con ese nombre.");
+
+            // El rango de precio ya lo valida DataAnnotation (mayor que cero)
+
+            if (!ModelState.IsValid)
+                return View(tratamiento);
+
+            tratamiento.Id = Guid.NewGuid();
+            _context.Add(tratamiento);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Tratamientoes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
@@ -90,31 +96,28 @@ namespace DentAssist.Controllers
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nombre,Descripcion,PrecioEstimado")] Tratamiento tratamiento)
         {
             if (id != tratamiento.Id)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
+            // Validación: nombre único excluyendo este
+            if (_context.Tratamientos.Any(t => t.Nombre == tratamiento.Nombre && t.Id != id))
+                ModelState.AddModelError("Nombre", "Otro tratamiento ya usa ese nombre.");
+
+            if (!ModelState.IsValid)
+                return View(tratamiento);
+
+            try
             {
-                try
-                {
-                    _context.Update(tratamiento);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TratamientoExists(tratamiento.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(tratamiento);
+                await _context.SaveChangesAsync();
             }
-            return View(tratamiento);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Tratamientos.Any(e => e.Id == tratamiento.Id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Tratamientoes/Delete/5

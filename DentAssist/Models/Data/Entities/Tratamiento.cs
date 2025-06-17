@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DentAssist.Models.Data.Entities
 {
@@ -11,7 +12,8 @@ namespace DentAssist.Models.Data.Entities
         [Required(ErrorMessage = "La descripcion debe ser obligatorio")]
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "El Precio debe ser obligatorio")]
-        [Precision(10, 2)]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor que cero.")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PrecioEstimado { get; set; }
 
         // Navigation properties

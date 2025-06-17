@@ -3,11 +3,6 @@ using DentAssist.Models.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Threading.Tasks;
 
 namespace DentAssist.Controllers
 {
@@ -59,27 +54,34 @@ namespace DentAssist.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-    [Bind("FechaCreacion,Observaciones,PacienteId,OdontologoId")]
-    PlanTratamiento plan)
+            [Bind("FechaCreacion,Observaciones,PacienteId,OdontologoId")]
+            PlanTratamiento plan)
         {
+            // Validación: fecha no futura
+            if (plan.FechaCreacion.Date > DateTime.Today)
+                ModelState.AddModelError("FechaCreacion", "La fecha no puede ser posterior al día de hoy.");
+
+            // Validación: mismo paciente y fecha duplicada
+            if (_context.PlanesTratamiento.Any(p =>
+                p.PacienteId == plan.PacienteId &&
+                p.FechaCreacion.Date == plan.FechaCreacion.Date))
+            {
+                ModelState.AddModelError(string.Empty, "Ya existe un plan de tratamiento para este paciente en esa fecha.");
+            }
+
             if (!ModelState.IsValid)
             {
-                // loguea para depurar:
-                var errores = ModelState
-                    .Where(x => x.Value.Errors.Count > 0)
-                    .Select(x => $"{x.Key}: {string.Join(", ", x.Value.Errors.Select(e => e.ErrorMessage))}");
-                Console.WriteLine("Errores de validación -> " + string.Join(" | ", errores));
-
+                // Recarga dropdowns en caso de error
                 ViewBag.PacienteId = new SelectList(_context.Pacientes, "Id", "Nombre", plan.PacienteId);
                 ViewBag.OdontologoId = new SelectList(_context.Odontologos, "Id", "Nombre", plan.OdontologoId);
                 return View(plan);
             }
 
+            plan.Id = Guid.NewGuid();
             _context.Add(plan);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
 
         // GET: PlanTratamientoes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
@@ -104,36 +106,46 @@ namespace DentAssist.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,FechaCreacion,Observaciones,PacienteId,OdontologoId")] PlanTratamiento planTratamiento)
+        public async Task<IActionResult> Edit(Guid id,
+            [Bind("Id,FechaCreacion,Observaciones,PacienteId,OdontologoId")]
+            PlanTratamiento planTratamiento)
         {
             if (id != planTratamiento.Id)
-            {
                 return NotFound();
+
+            // Validación: fecha no futura
+            if (planTratamiento.FechaCreacion.Date > DateTime.Today)
+                ModelState.AddModelError("FechaCreacion", "La fecha no puede ser posterior al día de hoy.");
+
+            // Validación: duplicado excluyendo este registro
+            if (_context.PlanesTratamiento.Any(p =>
+                p.PacienteId == planTratamiento.PacienteId &&
+                p.FechaCreacion.Date == planTratamiento.FechaCreacion.Date &&
+                p.Id != id))
+            {
+                ModelState.AddModelError(string.Empty, "Ya existe otro plan para este paciente en esa fecha.");
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(planTratamiento);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlanTratamientoExists(planTratamiento.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", planTratamiento.OdontologoId);
+                ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", planTratamiento.PacienteId);
+                return View(planTratamiento);
             }
-            ViewData["OdontologoId"] = new SelectList(_context.Odontologos, "Id", "Nombre", planTratamiento.OdontologoId);
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Nombre", planTratamiento.PacienteId);
-            return View(planTratamiento);
+
+            try
+            {
+                _context.Update(planTratamiento);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.PlanesTratamiento.Any(e => e.Id == planTratamiento.Id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PlanTratamientoes/Delete/5
