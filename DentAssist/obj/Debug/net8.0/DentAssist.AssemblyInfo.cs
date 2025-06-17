@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DentAssist")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fe65c24c5856d3171df1f3d16ab91204521b5f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+307fab3209427ea936355f40df906208ee9af77b")]
 [assembly: System.Reflection.AssemblyProductAttribute("DentAssist")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DentAssist")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
