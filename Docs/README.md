@@ -19,16 +19,9 @@ Listado detallado de las validaciones aplicadas a los formularios, tanto del lad
 
 ---
 
-## 🔧 Uso sugerido
+## 🔧 Informativo
 
-- Para evaluaciones académicas o defensa del proyecto, presentar primero el `CasosDeUso.md`.
-- Para soporte técnico o ayuda a usuarios nuevos, compartir `ManualUsuario.md`.
-- Para revisión técnica o QA, usar `Validaciones.md`.
-
----
-
-## 📌 Notas
-
-- Puedes complementar estos documentos con capturas de pantalla, diagramas UML y una posible extensión en PDF.
-- Si realizas cambios importantes en el sistema, recuerda actualizar estos archivos.
+- Para comprender la funcionalidad del sistema, revisar `CasosDeUso.md`.
+- Para soporte técnico o ayuda a usuarios nuevos, revisar `ManualUsuario.md`.
+- Para revisión técnica, revisar `Validaciones.md`.
 
