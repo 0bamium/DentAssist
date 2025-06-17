@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\",
+  "WorkspaceRootPath": "F:\\ProyectosVS_2022\\DentAssist\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|c:\\users\\seba\\desktop\\patrones\\dentassist\\dentassist\\models\\data\\entities\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|f:\\proyectosvs_2022\\dentassist\\dentassist\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|solutionrelative:dentassist\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|f:\\proyectosvs_2022\\dentassist\\dentassist\\models\\data\\entities\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5BB9A69-6E5E-40EA-BDED-D8431C21A930}|DentAssist\\DentAssist.csproj|solutionrelative:dentassist\\models\\data\\entities\\turno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -19,12 +23,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\appsettings.json",
+              "RelativeDocumentMoniker": "DentAssist\\appsettings.json",
+              "ToolTip": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\appsettings.json",
+              "RelativeToolTip": "DentAssist\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-17T04:45:01.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Turno.cs",
-              "DocumentMoniker": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Models\\Data\\Entities\\Turno.cs",
+              "DocumentMoniker": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\Models\\Data\\Entities\\Turno.cs",
               "RelativeDocumentMoniker": "DentAssist\\Models\\Data\\Entities\\Turno.cs",
-              "ToolTip": "C:\\Users\\seba\\Desktop\\patrones\\DentAssist\\DentAssist\\Models\\Data\\Entities\\Turno.cs",
+              "ToolTip": "F:\\ProyectosVS_2022\\DentAssist\\DentAssist\\Models\\Data\\Entities\\Turno.cs",
               "RelativeToolTip": "DentAssist\\Models\\Data\\Entities\\Turno.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T03:17:15.358Z",
               "EditorCaption": ""
