@@ -118,14 +118,13 @@ Views/
 
 ## 🎓 Autores
 
-- Nombre 1
-- Nombre 2
-- Nombre 3
+- Sebastián Solís
+- José Méndez
+- Product Owner: Maximiliano Moraga
 
 Carrera: Ingeniería en Ejecución Informática  
 Asignatura: Programación .NET  
 Institución: Santo Tomás  
-Docente: Maximiliano Moraga
 
 ---
 
