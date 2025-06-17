@@ -8,20 +8,11 @@ Este directorio contiene todos los documentos necesarios para comprender y utili
 
 ## 📑 Archivos incluidos
 
-### 1. `ManualUsuario.md`
+### 1. [`ManualUsuario.md`](ManualUsuario.md)
 Guía paso a paso para el uso de la aplicación por parte del usuario final. Incluye instrucciones claras para cada módulo del sistema.
 
-### 2. `CasosDeUso.md`
+### 2. [`CasosDeUso.md`](CasosDeUso.md)
 Descripción de los casos de uso implementados, organizados según el rol funcional dentro del sistema (Recepcionista, Odontólogo, Administrador).
 
-### 3. `Validaciones.md`
+### 3. [`Validaciones.md`](Validaciones.md)
 Listado detallado de las validaciones aplicadas a los formularios, tanto del lado cliente como del servidor, asegurando integridad de datos.
-
----
-
-## 🔧 Informativo
-
-- Para comprender la funcionalidad del sistema, revisar `CasosDeUso.md`.
-- Para soporte técnico o ayuda a usuarios nuevos, revisar `ManualUsuario.md`.
-- Para revisión técnica, revisar `Validaciones.md`.
-
