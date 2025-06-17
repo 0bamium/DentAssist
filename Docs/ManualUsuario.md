@@ -9,14 +9,13 @@ Este documento tiene como objetivo guiar al usuario en el uso del sistema DentAs
 
 ## 👩‍💼 Módulo: Pacientes
 ### 📸 Ejemplo visual: Pacientes
+![Crearpaciente](Docs/imagenes/ManualUsuario/CrudUsuario/CrearPaciente.png)
 
-![Crearpaciente](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/CrearPaciente.png)
+![Editarpaciente](Docs/imagenes/ManualUsuario/CrudUsuario/EditarPaciente.png)
 
-![Editarpaciente](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/EditarPaciente.png)
+![Eliminarpaciente](Docs/imagenes/ManualUsuario/CrudUsuario/EliminarPaciente.png)
 
-![Eliminarpaciente](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/EliminarPaciente.png)
-
-![Verdetalle](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/VerDetalle.png)
+![Verdetalle](Docs/imagenes/ManualUsuario/CrudUsuario/VerDetalle.png)
 
 
 
@@ -27,13 +26,13 @@ Este documento tiene como objetivo guiar al usuario en el uso del sistema DentAs
 
 ## 🧑‍⚕️ Módulo: Odontólogos
 ### 📸 Ejemplo visual: Odontólogos
-![Crearodontologo](/mnt/data/ManualUsuario/ManualUsuario/CrudOdontologo/CrearOdontologo.png)
+![Crearodontologo](Docs/imagenes/ManualUsuario/CrudOdontologo/CrearOdontologo.png)
 
-![Editarodontologo](/mnt/data/ManualUsuario/ManualUsuario/CrudOdontologo/EditarOdontologo.png)
+![Editarodontologo](Docs/imagenes/ManualUsuario/CrudOdontologo/EditarOdontologo.png)
 
-![Eliminarodontologo](/mnt/data/ManualUsuario/ManualUsuario/CrudOdontologo/EliminarOdontologo.png)
+![Eliminarodontologo](Docs/imagenes/ManualUsuario/CrudOdontologo/EliminarOdontologo.png)
 
-![Verdetalleodontologo](/mnt/data/ManualUsuario/ManualUsuario/CrudOdontologo/VerDetalleOdontologo.png)
+![Verdetalleodontologo](Docs/imagenes/ManualUsuario/CrudOdontologo/VerDetalleOdontologo.png)
 
 
 
@@ -42,13 +41,13 @@ Este documento tiene como objetivo guiar al usuario en el uso del sistema DentAs
 
 ## 📅 Módulo: Turnos
 ### 📸 Ejemplo visual: Turnos
-![Crearturno](/mnt/data/ManualUsuario/ManualUsuario/CrudTurno/CrearTurno.png)
+![Crearturno](Docs/imagenes/ManualUsuario/CrudTurno/CrearTurno.png)
 
-![Editarturno](/mnt/data/ManualUsuario/ManualUsuario/CrudTurno/EditarTurno.png)
+![Editarturno](Docs/imagenes/ManualUsuario/CrudTurno/EditarTurno.png)
 
-![Eliminarturno](/mnt/data/ManualUsuario/ManualUsuario/CrudTurno/EliminarTurno.png)
+![Eliminarturno](Docs/imagenes/ManualUsuario/CrudTurno/EliminarTurno.png)
 
-![Verdetalle](/mnt/data/ManualUsuario/ManualUsuario/CrudTurno/VerDetalle.png)
+![Verdetalle](Docs/imagenes/ManualUsuario/CrudTurno/VerDetalle.png)
 
 
 
@@ -62,11 +61,11 @@ Este documento tiene como objetivo guiar al usuario en el uso del sistema DentAs
 
 ## 🦷 Módulo: Plan de Tratamiento
 ### 📸 Ejemplo visual: Plan de Tratamiento
-![Crearplantratamiento](/mnt/data/ManualUsuario/ManualUsuario/CrudPlanTratamiento/CrearPlanTratamiento.png)
+![Crearplantratamiento](Docs/imagenes/ManualUsuario/CrudPlanTratamiento/CrearPlanTratamiento.png)
 
-![Editarplantratamiento](/mnt/data/ManualUsuario/ManualUsuario/CrudPlanTratamiento/EditarPlanTratamiento.png)
+![Editarplantratamiento](Docs/imagenes/ManualUsuario/CrudPlanTratamiento/EditarPlanTratamiento.png)
 
-![Eliminarplantratamiento](/mnt/data/ManualUsuario/ManualUsuario/CrudPlanTratamiento/EliminarPlanTratamiento.png)
+![Eliminarplantratamiento](Docs/imagenes/ManualUsuario/CrudPlanTratamiento/EliminarPlanTratamiento.png)
 
 
 
