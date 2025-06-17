@@ -9,6 +9,7 @@ Este documento tiene como objetivo guiar al usuario en el uso del sistema DentAs
 
 ## 👩‍💼 Módulo: Pacientes
 ### 📸 Ejemplo visual: Pacientes
+
 ![Crearpaciente](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/CrearPaciente.png)
 
 ![Editarpaciente](/mnt/data/ManualUsuario/ManualUsuario/CrudUsuario/EditarPaciente.png)
