@@ -45,11 +45,11 @@ Este documento describe las reglas de validación utilizadas en el sistema para 
 
 A continuación se presentan imágenes que ilustran las validaciones en los formularios:
 
-- **Paciente**: ![Validaciones Paciente](../Docs/imágenes/validaciones/paciente.png)
-- **Turno**: ![Validaciones Turno](../Docs/imágenes/validaciones/turno.png)
-- **Odontólogo**: ![Validaciones Odontólogo](../Docs/imágenes/validaciones/odontologo.png)
-- **Tratamiento**: ![Validaciones Tratamiento](../Docs/imágenes/validaciones/tratamiento.png)
-- **Plan de Tratamiento**: ![Validaciones Plan de Tratamiento](../Docs/imágenes/validaciones/plan_tratamiento.png)
+- **Paciente**: ![Validaciones Paciente](../Docs/imagenes/validaciones/paciente.png)
+- **Turno**: ![Validaciones Turno](../Docs/imagenes/validaciones/turno.png)
+- **Odontólogo**: ![Validaciones Odontólogo](../Docs/imagenes/validaciones/odontologo.png)
+- **Tratamiento**: ![Validaciones Tratamiento](../Docs/imagenes/validaciones/tratamiento.png)
+- **Plan de Tratamiento**: ![Validaciones Plan de Tratamiento](../Docs/imagenes/validaciones/plan_tratamiento.png)
 
 ## 📄 Imágenes del Código de las Entidades
 
